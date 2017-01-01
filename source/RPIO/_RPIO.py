@@ -350,7 +350,7 @@ class Interruptor:
         """
         Closes all TCP connections and then the socket servers
         """
-        for fileno in self._tcp_client_sockets.keys():
+        for fileno in list(self._tcp_client_sockets.keys()):
             self.close_tcp_client(fileno)
         for fileno, items in self._tcp_server_sockets.items():
             socket, cb = items
